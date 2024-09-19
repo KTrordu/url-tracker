@@ -5,11 +5,15 @@ const inputEl = document.getElementById("input-el");
 
 const ulEl = document.getElementById("ul-el");
 
+let listItems = "";
+
 inputBtn.addEventListener("click", function() {
-    let leadToBePushed = inputEl.value;
-    myLeads.push(leadToBePushed);
+    
+    myLeads.push(inputEl.value)
     
     for (let i = 0; i < myLeads.length; i++) {
-        ulEl.innerHTML += "<li>" + myLeads[i] + "</li>";
+        listItems += "<li>" + myLeads[i] + "</li>";
     }
+
+    ulEl.innerHTML = listItems;
 });
