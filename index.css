@@ -78,15 +78,6 @@ button:hover {
     transform: scale(0.95);
 }
 
-#tab-btn:hover {
-    background-color: navy;
-    color: white;
-}
-
-#tab-btn:active {
-    transform: scale(0.95);
-}
-
 #ul-el {
     list-style-type: none;
     padding-left: 0;

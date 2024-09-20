@@ -1,48 +1,27 @@
-let myURLs = [];
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.13.2/firebase-app.js";
+import { getDatabase } from "https://www.gstatic.com/firebasejs/10.13.2/firebase-database.js";
+
+const firebaseConfig = {
+    databaseURL : "https://url-tracker-app-default-rtdb.europe-west1.firebasedatabase.app/"
+};
+
+const app = initializeApp(firebaseConfig);
+const database = getDatabase(app);
 
 const inputEl = document.getElementById("input-el");
 const inputBtn = document.getElementById("input-btn");
 const deleteBtn = document.getElementById("delete-btn");
-const tabBtn = document.getElementById("tab-btn");
 
 const ulEl = document.getElementById("ul-el");
 
-const URLsFromLocalStorage = JSON.parse(localStorage.getItem("myURLs"));
-
-if (URLsFromLocalStorage) {
-    myURLs = URLsFromLocalStorage;
-    render(myURLs);
-}
-
-tabBtn.addEventListener("click", function () {
-    
-    chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
-
-        myURLs.push(tabs[0].url);
-        localStorage.setItem("myURLs", JSON.stringify(myURLs));
-        render(myURLs);
-
-    });
-
-});
-
 inputBtn.addEventListener("click", function() {
 
-    myURLs.push(inputEl.value);
+    console.log(inputEl.value);
     inputEl.value = "";
 
-    localStorage.setItem("myURLs", JSON.stringify(myURLs));
-
-    render(myURLs);
 });
 
 deleteBtn.addEventListener("dblclick", function() {
-
-    localStorage.clear();
-
-    myURLs = [];
-
-    render(myURLs);
 
 });
 
